@@ -1,0 +1,29 @@
+# ======================
+# Node / React
+# ======================
+node_modules/
+frontend/node_modules/
+build/
+dist/
+.env
+.env.local
+
+# ======================
+# Spring Boot
+# ======================
+backend/target/
+*.log
+*.class
+
+# ======================
+# IDE files
+# ======================
+.idea/
+.vscode/
+*.iml
+
+# ======================
+# OS files
+# ======================
+.DS_Store
+Thumbs.db
