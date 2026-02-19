@@ -1,5 +1,8 @@
 import {useState} from "react";
-import API from "../api";
+import API from "./api";
+
+API.get("/users")
+
 function UserForm({refresh}){
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");

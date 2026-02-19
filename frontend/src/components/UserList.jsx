@@ -1,5 +1,8 @@
 import {useEffect,useState} from "react";
-import API from"../api";
+import API from "./api";
+
+API.get("/users")
+
 function UserList(){
     const [users,setUsers]=useState([]);
     const fetchUsers=async()=>{

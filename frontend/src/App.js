@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles/App.css";
+import API from "./api";
+
+API.get("/users")
 
 function App() {
     const [users, setUsers] = useState([]);

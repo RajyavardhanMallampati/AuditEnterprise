@@ -1,5 +1,8 @@
 import {useEffect,useState} from "react";
-import API from "../api";
+import API from "./api";
+
+API.get("/users")
+
 function DeletedUsers(){
     const [users,setUsers]=useState([]);
     const fetchDeleted=async()=>{
