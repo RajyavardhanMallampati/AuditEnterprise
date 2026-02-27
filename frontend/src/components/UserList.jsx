@@ -1,31 +1,44 @@
-import {useEffect,useState} from "react";
+import { useEffect, useState } from "react";
 import API from "./api";
 
-API.get("/users")
+function UserList() {
+    const [users, setUsers] = useState([]);
 
-function UserList(){
-    const [users,setUsers]=useState([]);
-    const fetchUsers=async()=>{
-        const res=await API.get("/users");
-        setUsers(res.data);
+    const fetchUsers = async () => {
+        try {
+            const res = await API.get("/users");
+            setUsers(res.data);
+        } catch (err) {
+            console.error("Error fetching users:", err);
+        }
     };
-    const softDelete=async(id)=>{
-        await API.delete(`/users/${id}`);
+
+    const softDelete = async (id) => {
+        try {
+            await API.delete(`/users/${id}`);
+            fetchUsers();
+        } catch (err) {
+            console.error("Error deleting user:", err);
+        }
+    };
+
+    useEffect(() => {
         fetchUsers();
-    }
-    useEffect(()=>{
-        fetchUsers();
-    },[]);
-    return(
+    }, []);
+
+    return (
         <div>
             <h3>Active Users</h3>
-            {users.map((user)=>(
+            {users.map((user) => (
                 <div key={user.id}>
-                    {user.name}-{user.email}
-                    <button onClick={()=>softDelete(user.id)}>Delete</button>
-        </div>
+                    {user.name} - {user.email}
+                    <button onClick={() => softDelete(user.id)}>
+                        Delete
+                    </button>
+                </div>
             ))}
         </div>
     );
 }
+
 export default UserList;
