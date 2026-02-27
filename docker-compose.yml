@@ -19,7 +19,7 @@ services:
     container_name: audit-backend
     restart: always
     ports:
-      - "8080:8080"
+      - "5050:8080"
     depends_on:
       - mysql
     environment:
