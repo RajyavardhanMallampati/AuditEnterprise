@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles/App.css";
-import API from "./api";
-
-API.get("/users")
 
 function App() {
     const [users, setUsers] = useState([]);
@@ -11,7 +8,7 @@ function App() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
 
-    const API = "http://localhost:8080/users";
+    const API = "http://13.60.242.247:5050/users";
 
     useEffect(() => {
         fetchUsers();
